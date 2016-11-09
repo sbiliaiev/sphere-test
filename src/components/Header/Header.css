@@ -1,0 +1,10 @@
+@font-face {
+	font-family: "trueLies";
+	src: url(TrueLies.ttf);
+}
+
+.app-header {
+	font-family: trueLies;
+	font-size: 5em;
+	text-align: center;
+}
