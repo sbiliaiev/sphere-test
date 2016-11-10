@@ -5,6 +5,7 @@ import './App.css';
 
 import Header from '../Header/Header';
 import SearchField from '../SearchField/SearchField';
+import LocationList from '../LocationList/LocationList';
 
 
 import { getCurrentWeather } from '../../api/weather';
@@ -14,6 +15,7 @@ export default class App extends Component {
 	costructor() {
 		this.state = {
 			currentCity: '',
+			locations: [],
 		};
 	}
 
@@ -39,6 +41,7 @@ export default class App extends Component {
 			<div className="App">
 				<Header />
 				<SearchField onChange={this.handleInputChange} search={this.handleCitySearch} />
+				<LocationList />
 			</div>
 		);
 	}
