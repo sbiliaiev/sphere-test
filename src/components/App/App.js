@@ -19,9 +19,14 @@ export default class App extends Component {
 
 	handleCitySearch = (event) => {
 		event.preventDefault();
-		let prom = getCurrentWeather(this.state.currentCity);
-		console.log('prom', prom);
-
+		let tmp;
+		getCurrentWeather(this.state.currentCity)
+			.then((response) => {
+				return response.json()
+			})
+			.then((data) => {
+				console.log(data);
+			});
 	}
 
 	handleInputChange = (event) => {
