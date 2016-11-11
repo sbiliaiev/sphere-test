@@ -1,0 +1,11 @@
+.location-list li > span >span {
+	width: 90% !important;
+}
+
+.location-list button {
+	width: 100% !important;
+}
+
+.active-location {
+	background: rgba(255,64,129,0.70) !important;
+}

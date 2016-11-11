@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Snackbar } from 'react-mdl';
+import { Snackbar, Grid, Cell } from 'react-mdl';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -19,18 +19,20 @@ export default class App extends Component {
 				locations: JSON.parse(localStorage.getItem('locations')),
 				isSnackbarActive: false,
 				currentCity: currentCity,
+				currentListItem: +localStorage.getItem('currentListItem'),
 				searchLocation: '',
 			};
-			this.handleCurrentLocation(currentCity);
+			this.handleCurrentLocation(currentCity, this.state.currentListItem);
 		}
 		else {
 			this.state = {
 				currentCity: 'Kharkiv,UA',
 				locations: ['New York,NY', 'Kharkiv,UA'],
 				isSnackbarActive: false,
+				currentListItem: 1,
 				searchLocation: '',		
 			};
-			this.handleCurrentLocation('Kharkiv,UA');
+			this.handleCurrentLocation('Kharkiv,UA', 1);
 			localStorage.setItem('locations', JSON.stringify(this.state.locations));
 		}
 	}
@@ -47,10 +49,11 @@ export default class App extends Component {
 					searchLocation: '',
 					currentWeather: data,
 					currentCity: data.name+','+data.sys.country.toUpperCase(),
+					currentListItem: this.state.locations.length,
 				});
 				localStorage.setItem('locations', JSON.stringify(this.state.locations));
 				localStorage.setItem('currentCity', data.name+','+data.sys.country.toUpperCase());
-				console.log('here', this.state);
+				localStorage.setItem('currentListItem', this.state.locations.length-1);
 			});
 	}
 
@@ -60,22 +63,24 @@ export default class App extends Component {
 		locations.splice(locations.indexOf(location), 1);
 		this.setState({ locations });
 		localStorage.setItem('locations', JSON.stringify(locations));
-		if (location === this.state.currentCity)
-			this.handleCurrentLocation('Kharkiv,UA');
+		if (location === this.state.currentCity) {
+			this.handleCurrentLocation('Kharkiv,UA', 1);
+		}	
 	}
 
-	handleCurrentLocation = (location) => {
+	handleCurrentLocation = (location, index) => {
 		getCurrentWeather(location)
 			.then((response) => {
 				return response.json()
 			})
 			.then((data) => {
 				localStorage.setItem('currentCity', location);
+				localStorage.setItem('currentListItem', index);
 				this.setState({
 					currentWeather: data,
 					currentCity: location,
+					currentListItem: index,
 				});
-				console.log('here', this.state);
 			});
 	}
 
@@ -89,10 +94,18 @@ export default class App extends Component {
 			<div className="App">
 				<Header />
 				<SearchField onChange={this.handleInputChange} search={this.handleCitySearch} value={this.state.searchLocation} />
-				<LocationList locations={this.state.locations} 
-					remove={this.handleLocationRemove} 
-					setCurrentLocation={this.handleCurrentLocation} />
-				<WeatherIndicator weather={this.state.currentWeather} />
+				
+				<Grid noSpacing={true}>
+					<Cell col={3} offsetDesktop={2} tablet={3} phone={4}>
+						<LocationList locations={this.state.locations} 
+							remove={this.handleLocationRemove} 
+							setCurrentLocation={this.handleCurrentLocation}
+							currentLocationIndex={this.state.currentListItem} />
+					</Cell>
+					<Cell col={5} tablet={5} phone={4}>
+						<WeatherIndicator weather={this.state.currentWeather} />							
+					</Cell>
+				</Grid>
 				
 				<Snackbar
 					active={this.state.isSnackbarActive}

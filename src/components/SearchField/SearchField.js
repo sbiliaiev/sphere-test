@@ -1,16 +1,16 @@
 import React from 'react';
 import { Textfield, Grid, Cell, FABButton, Icon } from 'react-mdl';
+import './SearchField.css';
 
 export default class SearchField extends React.Component {
 	render() {
 		return(
 			<Grid>
-				<Cell col={8} tablet={8} phone={4} offsetDesktop={2}>
+				<Cell col={3} offsetDesktop={2} tablet={4} phone={4}>
 					<form>
 						<Textfield
 							onChange={this.props.onChange}
 							label="Enter your location"
-							style={{width: '200px'}}
 							value={this.props.value}
 						/>
 						<FABButton ripple onClick={this.props.search}>

@@ -1,33 +1,23 @@
 import React from 'react';
+import { Spinner } from 'react-mdl';
+import './css/weatherIcons.css';
+import './WeatherIndicator.css';
 
 export default class WeatherIndicator extends React.Component {
-	constructor(props) {
-		super(props);
-		console.log(this.props);
-	}
-
 	render() {
-		// const weather = this.props.weather;
-		// console.log(weather);
-		return(<ul>
-			
-		</ul>);
-	}
-
-	componentWillReceiveProps() {
-		console.log('componentWillReceiveProps', this.props.weather);
-	}
-
-	componentDidMount() {
-		console.log('componentDidMount', this.props.weather);
-	}
-
-	componentWillMount() {
-		console.log('componentWillMount', this.props.weather);
-	}
-
-	componentWillUpdate() {
-		console.log('componentWillUpdate', this.props.weather);
+		if (this.props.weather) {
+			const weather = this.props.weather;
+			return (
+				<div className='weather-indicator-container'>
+					<p>
+						<li className={'wi wi-owm-'+weather.weather[0].id}></li>
+						<span>{Math.round(weather.main.temp - 273.15)} &deg;C</span>
+					</p>
+					<p>{weather.weather[0].description.replace(/\b\w/g, l => l.toUpperCase())}</p>
+				</div>
+			);
+		}
+		else return <Spinner />;
 	}
 }
 

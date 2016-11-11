@@ -1,0 +1,28 @@
+/*@media screen and (max-width: 970px) {
+	input {
+		width: 30% !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	input {
+		width: 50% !important;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	input {
+		width: 100% !important;
+	}
+}*/
+
+form > div {
+	width: 80% !important;
+}
+
+form > button {
+	height: 40px !important;
+	min-width: 40px !important;
+	width: 40px !important;
+	/*width: 10% !important;*/
+} 
