@@ -1,23 +1,29 @@
 import React from 'react';
-import { List, ListItem, ListItemContent, ListItemAction, Icon } from 'react-mdl';
+import { List, ListItem, ListItemContent, ListItemAction, Icon, Button } from 'react-mdl';
 
 export default class LocationList extends React.Component {
 	render() {
-		// console.log(this.props);
-		// console.log(JSON.parse(localStorage.getItem('locations')));
 		return (
 			<List style={{width: '256px'}}>
 				{this.props.locations.map((item, index) => {
 					return (<ListItem key={index}>
-						<ListItemContent style={{borderBottom: 'solid black 1px'}}>
-							{item}
-						</ListItemContent>
-						<ListItemAction>
-							<a onClick={() => this.props.remove(item)}><Icon name="clear" /></a>
-						</ListItemAction>
+							<ListItemContent>
+								<Button raised ripple style={{width: '200px'}} onClick={() => this.props.setCurrentLocation(item)}>
+									{item}
+								</Button>
+							</ListItemContent>
+							<ListItemAction>
+								<a onClick={() => this.props.remove(item)}><Icon name="clear" /></a>
+							</ListItemAction>
 					</ListItem>);
 				})}
 			</List>
 		); 
 	}
 }
+
+LocationList.PropTypes = {
+	locations: React.PropTypes.array,
+	remove: React.PropTypes.func,
+	setCurrentLocation: React.PropTypes.func,
+};
