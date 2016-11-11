@@ -11,6 +11,7 @@ export default class SearchField extends React.Component {
 							onChange={this.props.onChange}
 							label="Enter your location"
 							style={{width: '200px'}}
+							value={this.props.value}
 						/>
 						<FABButton ripple onClick={this.props.search}>
 							<Icon name="search" />
