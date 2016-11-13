@@ -51,7 +51,6 @@ export default class LocationList extends React.Component {
 	}
 
 	render() {
-<<<<<<< HEAD
 		if (this.props.locations.length > 0) {
 			return (
 				<List className="location-list">
@@ -87,35 +86,11 @@ export default class LocationList extends React.Component {
 				</List>
 			);
 		}
-=======
-		return (
-			<List className="location-list">
-				{this.props.locations.map((item, index) => {
-					return (<ListItem key={index}>
-							<ListItemContent>
-								<Button raised ripple onClick={() => this.props.setCurrentLocation(item, index)}
-								className={index === this.props.currentLocationIndex ? 'active-location' : ''}>
-									{item}
-								</Button>
-							</ListItemContent>
-							<ListItemAction>
-								<a onClick={() => this.props.remove(item)}><Icon name="clear" /></a>
-							</ListItemAction>
-					</ListItem>);
-				})}
-			</List>
-		); 
->>>>>>> 8bdd2fb9bff1cc2c1bc6b3ef2edec8f3879f6641
 	}
 }
 
 LocationList.PropTypes = {
 	locations: React.PropTypes.array,
 	remove: React.PropTypes.func,
-<<<<<<< HEAD
 	onLocationChange: React.PropTypes.func,
-=======
-	setCurrentLocation: React.PropTypes.func,
-	currentLocationIndex: React.PropTypes.number,
->>>>>>> 8bdd2fb9bff1cc2c1bc6b3ef2edec8f3879f6641
 };

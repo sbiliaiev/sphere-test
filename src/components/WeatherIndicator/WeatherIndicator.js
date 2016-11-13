@@ -2,7 +2,6 @@ import React from 'react';
 import { Spinner } from 'react-mdl';
 import './css/weatherIcons.css';
 import './WeatherIndicator.css';
-<<<<<<< HEAD
 
 import { getCurrentWeather } from '../../api/weather';
 
@@ -43,13 +42,6 @@ export default class WeatherIndicator extends React.Component {
 		}
 		else if (this.state.currentWeather) {
 			const weather = this.state.currentWeather;
-=======
-
-export default class WeatherIndicator extends React.Component {
-	render() {
-		if (this.props.weather) {
-			const weather = this.props.weather;
->>>>>>> 8bdd2fb9bff1cc2c1bc6b3ef2edec8f3879f6641
 			return (
 				<div className='weather-indicator-container'>
 					<p>
@@ -60,10 +52,6 @@ export default class WeatherIndicator extends React.Component {
 				</div>
 			);
 		}
-<<<<<<< HEAD
-=======
-		else return <Spinner />;
->>>>>>> 8bdd2fb9bff1cc2c1bc6b3ef2edec8f3879f6641
 	}
 }
 
