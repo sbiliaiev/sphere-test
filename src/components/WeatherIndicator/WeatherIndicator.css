@@ -2,12 +2,6 @@
 	font-size: 10em;
 }
 
-p.weather-indicator {
-	font-size: 5em;
-	margin-bottom: 50px;
-	/*margin-left: 10px;*/
-}
-
 div.weather-indicator-container {
 	/*display: flex;
 	flex-direction: row;*/
@@ -22,9 +16,4 @@ div.weather-indicator-container p:nth-child(2) {
 div.weather-indicator-container span {
 	font-size: 3em;	
 	margin-left: 10px;
-}
-
-div.weather-indicator {
-	display: flex;
-	flex-direction: column;
 }

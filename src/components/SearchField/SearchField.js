@@ -42,7 +42,5 @@ export default class SearchField extends React.Component {
 }
 
 SearchField.PropTypes = {
-	onChange: React.PropTypes.func,
-	onClick: React.PropTypes.func,
-	value: React.PropTypes.string,
+	onSearch: React.PropTypes.func,
 };

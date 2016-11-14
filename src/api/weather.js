@@ -4,23 +4,4 @@ export function getCurrentWeather(city) {
 		.then((response) => {
 			return response.json()
 		});
-		// .then((response) => {
-		// 	if (response.status >= 200 && response.status < 300) {  
-		// 		return Promise.resolve(response)  
-		// 	} else {  
-		// 		return Promise.reject(new Error(response.statusText))  
-		// 	}  
-		// })
-		// .then((response) => {
-		// 	return response.json()
-		// })
-		// .then((data) => {
-		// 	console.log('Request succeeded with JSON response', data);
-		// 	tmp = data;
-		// 	// console.log('here', tmp);
-		// 	return data;
-		// })
-		// .catch((error) => {
-		// 	console.log('error', error);
-		// });
 }

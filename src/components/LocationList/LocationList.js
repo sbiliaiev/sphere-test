@@ -91,6 +91,6 @@ export default class LocationList extends React.Component {
 
 LocationList.PropTypes = {
 	locations: React.PropTypes.array,
-	remove: React.PropTypes.func,
+	onLocationRemove: React.PropTypes.func,
 	onLocationChange: React.PropTypes.func,
 };

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Snackbar, Grid, Cell } from 'react-mdl';
-import './App.css';
 
 import Header from '../Header/Header';
 import SearchField from '../SearchField/SearchField';
 import LocationList from '../LocationList/LocationList';
 import WeatherIndicator from '../WeatherIndicator/WeatherIndicator';
 
-export default class App extends Component {
+export default class App extends React.Component {
 	constructor() {
 		super();
 		if (localStorage.getItem('locations') && JSON.parse(localStorage.getItem('locations')).length > 0) {
@@ -34,27 +33,27 @@ export default class App extends Component {
 		localStorage.setItem('locations', JSON.stringify(this.state.locations));
 	}
 
-	handleCitySearch = (location) => {
+	handleLocationSearch = (location) => {
 		this.setState({
 			currentLocation: location,
 		});
 	}
 
-	onLocationRemove = (locationIndex) => {
+	handleLocationAdd = (location) => {
+		this.setState({
+			currentLocation: location,
+		});
+	}
+
+	handleLocationRemove = (locationIndex) => {
 		this.setState({ isSnackbarActive: true });
 		let locations = this.state.locations;
 		locations.splice(locationIndex, 1);
 		this.setState({ locations });
 	}
 
-	onLocationChange = (locationIndex) => {	
+	handleLocationChange = (locationIndex) => {	
 		this.setState({currentLocation: this.state.locations[locationIndex]});
-	}
-
-	onLocationAdd = (location) => {
-		this.setState({
-			currentLocation: location,
-		});
 	}
 
 	handleWeatherResponse = (location) => {
@@ -72,17 +71,17 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div>
 				<Header />
-				<SearchField onSearch={this.handleCitySearch} />
+				<SearchField onSearch={this.handleLocationSearch} />
 				
 				<Grid noSpacing={true}>
 					<Cell col={3} offsetDesktop={2} tablet={3} phone={4}>
 						<LocationList 
 							locations={this.state.locations} 
-							onLocationRemove={this.onLocationRemove} 
-							onLocationChange={this.onLocationChange}
-							onLocationAdd={this.onLocationAdd} />
+							onLocationRemove={this.handleLocationRemove} 
+							onLocationChange={this.handleLocationChange}
+							onLocationAdd={this.handleLocationAdd} />
 					</Cell>
 					<Cell col={5} tablet={5} phone={4}>
 						<WeatherIndicator 

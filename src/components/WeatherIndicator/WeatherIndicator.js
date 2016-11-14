@@ -57,4 +57,6 @@ export default class WeatherIndicator extends React.Component {
 
 WeatherIndicator.PropTypes = {
 	weather: React.PropTypes.object,
+	location: React.PropTypes.string,
+	show: React.PropTypes.bool,
 };
