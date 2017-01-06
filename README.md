@@ -1,4 +1,6 @@
 ## Weather Widget
+Pretty simple weather widget created with React.JS library.
+
 ![demo](https://pp.vk.me/c638928/v638928854/b98c/g9P-1QhNuow.jpg)
 
 ## Installation
